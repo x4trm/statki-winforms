@@ -66,7 +66,7 @@ namespace StatkiWF
             {
                 if(manager.player1.statkiTemp[i].CzyKlikniety(e)==true)
                 {
-                    //flagaCzyKliknietyStatek = true;
+                    flagaCzyKliknietyStatek = true;
                     return i;
                 }
             }
@@ -177,14 +177,36 @@ namespace StatkiWF
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if(indexStatku!=-1)
+            if(indexStatku!=-1 && flagaCzyKliknietyStatek==true)
             {
-                manager.player1.statkiTemp[indexStatku].xPx = e.X;
-                manager.player1.statkiTemp[indexStatku].yPy = e.Y;
+                manager.player1.statkiTemp[indexStatku].xPx = Convert.ToByte(((e.X) / 30))*30+10;
+                manager.player1.statkiTemp[indexStatku].yPy = Convert.ToByte(((e.Y) / 30))*30;
+                if(e.Button==MouseButtons.Right)
+                {
+                    if(manager.player1.statkiTemp[indexStatku].k==kierunek.PIONOWO)
+                    {
+                        manager.player1.statkiTemp[indexStatku].k = kierunek.POZIOMO;
+                    }
+                    else
+                    {
+                        manager.player1.statkiTemp[indexStatku].k = kierunek.PIONOWO;
+                    }
+                }
 
 
             }
             pictureBox1.Invalidate();
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+
+            manager.player1.statkiTemp[indexStatku].x= Convert.ToByte(((e.X - 10) / 30));
+            manager.player1.statkiTemp[indexStatku].y = Convert.ToByte(((e.Y - 90) / 30));
+
+            flagaCzyKliknietyStatek = false;
+            pictureBox1.Invalidate();
+            //pictureBox1.Invalidate();
         }
     }
 }

@@ -21,21 +21,7 @@ namespace StatkiWF
             player1 = new Czlowiek();
             player2 = new Bot();
         }
-/*        public bool CzyKoniecGry()
-        {
-            if(player1.CzyPrzegralem())
-            {
-                winner = player2;
-                return true;
-            }
-            if(player2.CzyPrzegralem())
-            {
-                winner = player1;
-                return true;
-            }
-            return false;
-        }*/
-        
+
        
     }
 }
