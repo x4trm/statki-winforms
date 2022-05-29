@@ -1,5 +1,12 @@
 namespace StatkiWF
 {
+    public enum StanGry
+    {
+        RuchGracza,
+        RuchBota,
+        WyborTrybuGry,
+        RozstawienieStatkow
+    }
     public partial class Form1 : Form
     {
 
@@ -48,16 +55,7 @@ namespace StatkiWF
         {
             manager.player1.MojeStatki.NarysujPlansze(e, 10, 90);
             manager.player1.MojeStrzaly.NarysujPlansze(e, 400, 90);
-            stanGry = StanGry.RuchGracza;
-            if (czyRysowacStatki == true)
-            {
-                NarysujStatki(e, 10, 400,false);
-                czyRysowacStatki = false;
-             
-            }
-            else
-                NarysujStatki(e,0,0,true);
-                //pictureBox1.Invalidate();
+            stanGry = StanGry.WyborTrybuGry;
            
         }
         private int  KlikanietyStatek(MouseEventArgs e)
@@ -179,9 +177,9 @@ namespace StatkiWF
         {
             if(indexStatku!=-1 && flagaCzyKliknietyStatek==true)
             {
-                manager.player1.statkiTemp[indexStatku].xPx = Convert.ToByte(((e.X) / 30))*30+10;
+                manager.player1.statkiTemp[indexStatku].xPx = Convert.ToByte(((e.X) / 30))*30 + 10;
                 manager.player1.statkiTemp[indexStatku].yPy = Convert.ToByte(((e.Y) / 30))*30;
-                if(e.Button==MouseButtons.Right)
+                if(e.Button== MouseButtons.Right)
                 {
                     if(manager.player1.statkiTemp[indexStatku].k==kierunek.PIONOWO)
                     {
@@ -201,9 +199,19 @@ namespace StatkiWF
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
 
-            manager.player1.statkiTemp[indexStatku].x= Convert.ToByte(((e.X - 10) / 30));
-            manager.player1.statkiTemp[indexStatku].y = Convert.ToByte(((e.Y - 90) / 30));
+            byte x= Convert.ToByte(((e.X - 10) / 30));
+            byte y = Convert.ToByte(((e.Y - 90) / 30));
+            Statek s = new Statek(y, x, manager.player1.statkiTemp[indexStatku].k, manager.player1.statkiTemp[indexStatku].rozmiar);
+            if(manager.player1.MojeStatki.CzyMoznaDostawicStatek(s)==true)
+            {
+                manager.player1.MojeStatki.DostawStatek(s);
+                manager.player1.statki.Add(s);
+                //manager.player1.statkiTemp[indexStatku].NarysujStatek(e);
+            }
+            else
+            {
 
+            }
             flagaCzyKliknietyStatek = false;
             pictureBox1.Invalidate();
             //pictureBox1.Invalidate();

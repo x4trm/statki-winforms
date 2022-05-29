@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace StatkiWF
 {
-   public enum StanGry
-    {
-        RuchGracza,
-        RuchBota
-    }
+
     public class Manager
     {
         public Gracz player1;

@@ -28,6 +28,7 @@ namespace StatkiWF
             {
                 maszty[i] = true;
             }
+            k = kierunek.POZIOMO;
         }
         public Statek(byte x,byte y,kierunek k,int size)
         {
