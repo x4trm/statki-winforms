@@ -28,29 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.flota = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.strzaly = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.flota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.strzaly)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // flota
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flota.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 174);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(978, 653);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.flota.Location = new System.Drawing.Point(12, 126);
+            this.flota.Name = "flota";
+            this.flota.Size = new System.Drawing.Size(395, 701);
+            this.flota.TabIndex = 0;
+            this.flota.TabStop = false;
+            this.flota.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.flota.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.flota.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.flota.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // button1
             // 
@@ -99,21 +101,32 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Moje Strzały";
             // 
+            // strzaly
+            // 
+            this.strzaly.Location = new System.Drawing.Point(415, 126);
+            this.strzaly.Name = "strzaly";
+            this.strzaly.Size = new System.Drawing.Size(454, 409);
+            this.strzaly.TabIndex = 6;
+            this.strzaly.TabStop = false;
+            this.strzaly.Paint += new System.Windows.Forms.PaintEventHandler(this.strzaly_Paint);
+            this.strzaly.MouseDown += new System.Windows.Forms.MouseEventHandler(this.strzaly_MouseDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 855);
+            this.ClientSize = new System.Drawing.Size(1000, 855);
+            this.Controls.Add(this.strzaly);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.flota);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.strzaly)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,11 +134,12 @@
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox flota;
         private Button button1;
         private Button button2;
         private Label label1;
         private Label label2;
         private Label label3;
+        private PictureBox strzaly;
     }
 }

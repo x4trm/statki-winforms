@@ -11,7 +11,7 @@ namespace StatkiWF
     {
         public Gracz player1;
         public Gracz player2;
-        //public Gracz? winner;
+        public string winner;
         public Manager()
         {
             player1 = new Czlowiek();
