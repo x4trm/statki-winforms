@@ -20,6 +20,7 @@ namespace StatkiWF
         public int yPy { get; set; }
         public int rozmiar { get; set; }
         public bool[] maszty { get; set; }
+        public bool czyRysowacStatek = false;
         public Statek(int size)
         {
             rozmiar= size;
@@ -45,16 +46,18 @@ namespace StatkiWF
         }
         public void NarysujStatek(PaintEventArgs e)
         {
-
-            Graphics k = e.Graphics;
-            Brush b = new SolidBrush(Color.Black);
-            Pen p = new Pen(Color.Black);
-            for (int j = 0; j < rozmiar; j++)
+            if (czyRysowacStatek == true)
             {
-               
-                k.FillRectangle(b, new Rectangle((int)xPx+j*30, (int)yPy, 30, 30));
-                k.DrawRectangle(p, xPx + j * 30, yPy, 30, 30);
-                
+                Graphics k = e.Graphics;
+                Brush b = new SolidBrush(Color.Black);
+                Pen p = new Pen(Color.Black);
+                for (int j = 0; j < rozmiar; j++)
+                {
+
+                    k.FillRectangle(b, new Rectangle((int)xPx + j * 30, (int)yPy, 30, 30));
+                    k.DrawRectangle(p, xPx + j * 30, yPy, 30, 30);
+
+                }
             }
         }
         public bool CzyKlikniety(MouseEventArgs e)

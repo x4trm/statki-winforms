@@ -33,7 +33,10 @@ namespace StatkiWF
                 return;
             else
             {
-                czyRysowacStatki = true;
+                for(int i=0;i<manager.player1.statkiTemp.Count;i++)
+                {
+                    manager.player1.statkiTemp[i].czyRysowacStatek = true;
+                }
                 stanGry = StanGry.RozstawienieStatkow;
             }
             flota.Invalidate();
@@ -219,20 +222,29 @@ namespace StatkiWF
             {
                 x = Convert.ToByte(((e.X - 10) / 30));
                 y = Convert.ToByte(((e.Y - 90) / 30));
-                Statek s = new Statek(y, x, manager.player1.statkiTemp[indexStatku].k, manager.player1.statkiTemp[indexStatku].rozmiar);
-
-                if (manager.player1.MojeStatki.CzyMoznaDostawicStatek(s) == true)
+                //Statek s = new Statek(y, x, manager.player1.statkiTemp[indexStatku].k, rozmiar);
+                manager.player1.statkiTemp[indexStatku].x = y;
+                manager.player1.statkiTemp[indexStatku].y = x;
+                if (manager.player1.MojeStatki.CzyMoznaDostawicStatek(manager.player1.statkiTemp[indexStatku]) == true)
                 {
-                    manager.player1.MojeStatki.DostawStatek(s);
-                    manager.player1.statki.Add(s);
-                   // manager.player1.statkiTemp.Remove(s);
-                    
+                    manager.player1.MojeStatki.DostawStatek(manager.player1.statkiTemp[indexStatku]);
+                    manager.player1.statki.Add(manager.player1.statkiTemp[indexStatku]);
+                    manager.player1.statkiTemp[indexStatku].czyRysowacStatek = false;
+                    manager.player1.statkiTemp[indexStatku].xPx = 3000;
+                    manager.player1.statkiTemp[indexStatku].yPy = 3000;
+                    manager.player1.statkiTemp.Remove(manager.player1.statkiTemp[indexStatku]);
+
                 }
                 flagaCzyKliknietyStatek = false;
                 indexStatku = -1;
                 
             }
-            
+            if(manager.player1.statkiTemp.Count==0)
+            {
+                DostawLosowoStatki(manager.player2);
+                //MessageBox.Show("Zacznij strzelac");
+                stanGry = StanGry.RuchGracza;
+            }
             flota.Invalidate();
         }
 
